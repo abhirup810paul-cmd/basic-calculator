@@ -90,6 +90,16 @@ def get_result():
             result_label.config(text=res)
 
 
+def percentage():
+    number = float(result_label['text'])
+    num = str(round(number/100, 2))
+    
+    if num[-2:] == '.0':
+        result_label.config(text=num[:-2])
+    else:
+        result_label.config(text=num)
+
+
 root = Tk()
 root.title('Calculator')
 # root.geometry('280x380')
@@ -113,7 +123,7 @@ button_all_clear = Button(root, text='AC', bg='#00a65a', fg='white', width=5, he
 button_all_clear.grid(row=1, column=0)
 button_all_clear.config(font=('verdana', 14))
 
-button_percentage = Button(root, text='%', bg='#00a65a', fg='white', width=5, height=2, command=lambda :get_operator('%'))
+button_percentage = Button(root, text='%', bg='#00a65a', fg='white', width=5, height=2, command=percentage)
 button_percentage.grid(row=1, column=1)
 button_percentage.config(font=('verdana', 14))
 
